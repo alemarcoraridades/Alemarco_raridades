@@ -14,4 +14,7 @@ export default defineConfig({
     },
   },
   base: process.env.NODE_ENV === 'production' ? '/Alemarco_raridades/' : '/',
+  build: {
+    outDir: './', // Gera na raiz
+  },
 });
