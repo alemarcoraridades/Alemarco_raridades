@@ -8,6 +8,7 @@ import { QuizHeader } from './QuizHeader';
 import { ProgressBar } from './ProgressBar';
 import QRCodeReact from 'qrcode.react';
 import { useQuizResponses } from '@/hooks/useQuizResponses';
+import { getQuizShareUrl } from '@/lib/quiz/urls';
 
 interface QuizPreviewProps {
   quiz: Quiz;
@@ -63,7 +64,7 @@ export const QuizPreview: React.FC<QuizPreviewProps> = ({ quiz, onClose }) => {
     setShowResults(false);
   };
 
-  const currentUrl = window.location.href;
+  const shareUrl = getQuizShareUrl(quiz.id);
 
   return (
     <div
@@ -106,7 +107,7 @@ export const QuizPreview: React.FC<QuizPreviewProps> = ({ quiz, onClose }) => {
               {showQR && (
                 <div className="flex flex-col items-center mb-8 p-6 bg-white rounded-xl shadow-lg">
                   <QRCodeReact 
-                    value={currentUrl} 
+                    value={shareUrl} 
                     size={200}
                     level="H"
                     includeMargin={true}
